@@ -1,20 +1,16 @@
-export default function Home() {
-  return (
-    <div className="grid lg:grid-cols-[250px_1fr_400px] min-h-screen p-5 gap-5 font-[family-name:var(--font-geist-sans)]">
-      <nav className=" grid lg:grid-rows-[1fr_200px] gap-5">
-        <div className="bg-panel rounded-3xl">
+import React from 'react'
 
-        </div>
-        <div className="bg-panel rounded-3xl">
+interface Props {
+    searchParams?: Promise<{
+        category?: string;
+    }>;
+}
 
-        </div>
-      </nav>
-      <main className="rounded-3xl">
+export default async function HomePage(props: Props) {
+    const searchParams = await props.searchParams;
+    const category = searchParams?.category || 'all';
 
-      </main>
-      <div className="cart bg-panel rounded-3xl">
-
-      </div>
-    </div>
-  );
+    return (
+        <>Home page {category}</>
+    )
 }

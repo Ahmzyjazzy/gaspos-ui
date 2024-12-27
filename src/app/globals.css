@@ -6,6 +6,10 @@
   --background: #07090F;
   --foreground: #FFFFFF;
   --panel: #1C1E23;
+  --active-bg: #272626;
+  --orange: #EDB055;
+  --green: #60BC94;
+  --purple: #6492EC;
 }
 
 @media (prefers-color-scheme: dark) {
