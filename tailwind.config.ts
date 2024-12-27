@@ -18,6 +18,7 @@ export default {
         orange: "var(--orange)",
         green: "var(--green)",
         purple: "var(--purple)",
+        input: "var(--input)",
       },
     },
   },

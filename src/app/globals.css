@@ -10,6 +10,7 @@
   --orange: #EDB055;
   --green: #60BC94;
   --purple: #6492EC;
+  --input: #2A2D31;
 }
 
 @media (prefers-color-scheme: dark) {
