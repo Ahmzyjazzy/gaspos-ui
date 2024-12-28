@@ -24,7 +24,7 @@ export default function Search({ placeholder = "Search Items..." }: Props) {
     }
 
     return (
-        <div className="flex items-center bg-input rounded-full px-4 py-3 max-w-sm">
+        <div className="flex items-center bg-pos-input-light rounded-full px-4 py-3 max-w-sm">
             <MagnifyingGlassIcon className="h-5 w-5 text-gray-400" />
             <input
                 type="text"

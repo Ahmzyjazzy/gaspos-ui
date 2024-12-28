@@ -1,10 +1,13 @@
+import { CurrencyCode } from "@/constants";
+
 export type MenuItemGroup = 'top' | 'bottom' | 'none';
 
 export interface MenuLink {
     name: string;
     path: string;
-    icon: string;
+    slug: string;
     group: MenuItemGroup;
+    icon?: string;
     isExternal?: boolean;
 }
 
@@ -12,10 +15,13 @@ export type ProductCategory = 'fuel' | 'food' | 'drinks';
 
 
 export interface Product {
-    id: string;
+    id: number;
     name: string;
     description: string;
     price: number;
-    image?: string;
+    quantity: number;
     category: ProductCategory;
+    currency: CurrencyCode;
+    image?: string;
+    colorCode?: string;
 }

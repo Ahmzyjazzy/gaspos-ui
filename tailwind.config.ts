@@ -15,12 +15,31 @@ export default {
         foreground: "var(--foreground)",
         panel: "var(--panel)",
         active: "var(--active-bg)",
-        orange: "var(--orange)",
-        green: "var(--green)",
-        purple: "var(--purple)",
-        input: "var(--input)",
+        pos: {
+          yellow: "var(--yellow)",
+          orange: "var(--orange)",
+          green: "var(--green)",
+          blue: "var(--blue)",
+          purple: "var(--purple)",
+          red: "var(--red)",
+          input: {
+            light: "var(--input)",
+            dark: "Var(--input-dark)",
+          }
+        }
       },
     },
   },
+  safelist: [
+    {
+      pattern: /bg-pos-(yellow|orange|green|blue|purple|red)/,
+    },
+    {
+      pattern: /border-(yellow|orange|green|blue|purple|red)-900/,
+    },
+    {
+      pattern: /bg-pos-input-(light|dark)/,
+    },
+  ],
   plugins: [],
 } satisfies Config;

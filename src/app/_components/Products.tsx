@@ -1,5 +1,6 @@
 import React from 'react'
 import { fetchProducts } from '../actions';
+import ProductItem from './ProductItem';
 
 interface Props {
   category: string;
@@ -12,7 +13,13 @@ export default async function Products({ category, query, currentPage }: Props) 
   const products = await fetchProducts({ category, query, currentPage });
   console.log(products);
 
-    return (
-      <div>{JSON.stringify(products, null, 2)}</div>
+  return (
+    <div className='grid lg:grid-cols-3 gap-5 max-h-[calc(100vh-100px)] overflow-y-auto'>
+      {products?.data?.map(product => {
+        return (
+          <ProductItem key={product.id} product={product} />
+        )
+      })}
+    </div>
   )
 }

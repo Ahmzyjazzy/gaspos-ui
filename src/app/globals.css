@@ -8,9 +8,13 @@
   --panel: #1C1E23;
   --active-bg: #272626;
   --orange: #EDB055;
+  --yellow: #EDAF54;
   --green: #60BC94;
-  --purple: #6492EC;
+  --blue: #6492EC;
+  --purple: #7764EC;
+  --red: #D87B7A;
   --input: #2A2D31;
+  --input-dark: #1B1D22;
 }
 
 @media (prefers-color-scheme: dark) {

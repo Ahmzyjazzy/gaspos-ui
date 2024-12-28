@@ -32,7 +32,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         cz-shortcut-listen="true"
       >
-        <div className="grid lg:grid-cols-[250px_1fr_400px] min-h-screen p-5 gap-5 font-[family-name:var(--font-geist-sans)]">
+        <div className="grid lg:grid-cols-[250px_1fr_400px] h-screen p-5 gap-5 font-[family-name:var(--font-geist-sans)]">
             <AppSidebar />
             <main className="rounded-3xl">
               {children}

@@ -1,12 +1,11 @@
-import { mockProducts } from "@/constants";
+import { mockProducts } from "@/data";
 import { FetchProductsRequestDto } from "./product.interface";
 
 export class ProductService {
     static async fetchProducts(payload: FetchProductsRequestDto) {
         const { category, query, currentPage } = payload;
-        const products = mockProducts;
 
-        const filteredProducts = products.filter((product) => {
+        const filteredProducts = mockProducts.filter((product) => {
             if (category === 'all') {
                 return product.name.toLowerCase().includes(query.toLowerCase());
             }
