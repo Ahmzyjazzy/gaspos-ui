@@ -2,9 +2,9 @@ import { MenuLink } from "@/types";
 
 export const menuLinks: MenuLink[] = [
     {
-        name: 'Home',
+        name: 'Fuel',
         path: '/',
-        slug: 'home',
+        slug: 'fuel',
         group: 'top'
     },
     {

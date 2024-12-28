@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import FuelQuantitySelector from './FuelQuantitySelector';
 import FuelVolumeInput from './FuelVolumeInput';
 import DefaultQuantityInput from './DefaultQuantityInput';
+import Image from 'next/image';
 
 interface Props {
     product: Product
@@ -87,11 +88,22 @@ export default function ProductItem({ product }: Props) {
     return (
         <div className='min-h-80 flex flex-col space-y-3'>
             <div className={cn(
-                "flex items-center justify-end rounded-3xl w-full h-16 border-8 border-black bg-white flex-1",
+                "flex items-center rounded-3xl w-full h-16 border-8 border-black bg-white flex-1",
                 product.colorCode && resolveColorCode(product.colorCode),
-                selected && `border-${product.colorCode}-900/50`
+                selected && `border-${product.colorCode}-900/50`,
+                product.image ? 'justify-center' : 'justify-end'
             )}>
-                <span className="text-black text-9xl font-bold">{getInitial(product.name)}</span>
+                {product.image ?
+                    (<Image
+                        src={product.image}
+                        alt={`${product.name} image`}
+                        priority
+                        width={128}
+                        height={128}
+                        layout="intrinsic"
+                        objectFit="contain"
+                    />) :
+                    (<span className="text-black text-9xl font-bold">{getInitial(product.name)}</span>)}
             </div>
             <div className='flex flex-col space-y-3 px-2'>
                 <span className="mt-2 text-lg font-bold text-white">{product.name}</span>
@@ -100,7 +112,7 @@ export default function ProductItem({ product }: Props) {
                         <div className='flex justify-between items-center flex-wrap'>
                             <p className='text-lg font-bold'>{formatCurrency(product.price)}</p>
                             <button
-                                className="px-5 py-2 bg-gray-700 text-white rounded-3xl text-sm w-fit"
+                                className="px-5 py-3 bg-pos-input-light text-white rounded-3xl text-sm w-fit"
                                 onClick={() => {
                                     handleAddToCart(product);
                                 }}
@@ -125,7 +137,7 @@ export default function ProductItem({ product }: Props) {
                                     </div>
                                 ) : (
                                     <DefaultQuantityInput
-                                        quantity={0}
+                                        quantity={quantity}
                                         onIncrease={handleIncreaseQuantity}
                                         onDecrease={handleDecreaseQuantity}
                                         onChange={handleQuantityChange}

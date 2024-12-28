@@ -13,7 +13,7 @@ interface Props {
 
 export default async function HomePage(props: Props) {
     const searchParams = await props.searchParams;
-    const category = searchParams?.category || 'all';
+    const category = searchParams?.category || 'fuel';
     const query = searchParams?.query || '';
     const currentPage = Number(searchParams?.page) || 1;
 

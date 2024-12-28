@@ -14,7 +14,7 @@ export default function AppSidebar() {
     const category = searchParams.get('category');
 
     const getActiveMenu = () => {
-        if (pathname === '/' && !category) return 'home';
+        if (pathname === '/' && !category) return 'fuel';
         if (pathname === '/' && category) return category;
         return null;
     };
