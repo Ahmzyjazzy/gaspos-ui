@@ -11,7 +11,6 @@ interface Props {
 export default async function Products({ category, query, currentPage }: Props) {
 
   const products = await fetchProducts({ category, query, currentPage });
-  console.log(products);
 
   return (
     <div className='grid lg:grid-cols-3 gap-5 max-h-[calc(100vh-100px)] overflow-y-auto'>

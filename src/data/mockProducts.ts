@@ -50,7 +50,7 @@ export const mockProducts: Product[] = [
         "id": 5,
         "name": "Liquefied gas",
         "description": "`This is a ${category} product`",
-        "price": 1.50,
+        "price": 1.80,
         "image": "`XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX${1}`",
         "category": "fuel",
         "colorCode": "purple",

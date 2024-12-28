@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { MagnifyingGlassIcon } from '@heroicons/react/16/solid';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
@@ -29,7 +29,7 @@ export default function Search({ placeholder = "Search Items..." }: Props) {
             <input
                 type="text"
                 placeholder={placeholder}
-                className="ml-2 bg-transparent border-none text-gray-200 placeholder-gray-400 focus:outline-none"
+                className="ml-2 bg-transparent border-none text-gray-200 placeholder-gray-400 focus:outline-none w-full"
                 onChange={(e) => handleSearch(e.target.value)}
                 defaultValue={searchParams.get('query')?.toString()}
             />

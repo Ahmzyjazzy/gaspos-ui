@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import config from "@/config/config";
 import AppSidebar from "./_components/AppSidebar";
+import { Providers } from "./provider";
+import AppCart from "./_components/AppCart";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,16 +34,18 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         cz-shortcut-listen="true"
       >
-        <div className="grid lg:grid-cols-[250px_1fr_400px] h-screen p-5 gap-5 font-[family-name:var(--font-geist-sans)]">
+        <Providers>
+          <div className="grid lg:grid-cols-[250px_1fr_400px] h-screen p-5 gap-5 font-[family-name:var(--font-geist-sans)]">
             <AppSidebar />
             <main className="rounded-3xl">
               {children}
             </main>
             <div className="cart bg-panel rounded-3xl">
-              App cart content display here
+              <AppCart />
             </div>
-        </div>
-        {drawers}
+          </div>
+          {drawers}
+        </Providers>
       </body>
     </html>
   );
