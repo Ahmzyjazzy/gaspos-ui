@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react'
 import Search from './_components/Search';
 import Products from './_components/Products';
-import ProductsTableSkeleton from './_components/ProductsTableSkeleton';
+import ProductsLoadingSkeleton from './_components/ProductsLoadingSkeleton';
 
 interface Props {
     searchParams?: Promise<{
@@ -20,7 +20,7 @@ export default async function HomePage(props: Props) {
     return (
         <div className='flex flex-col space-y-5'>
             <Search placeholder={'Search'} />
-            <Suspense key={query + currentPage} fallback={<ProductsTableSkeleton />}>
+            <Suspense key={query + currentPage} fallback={<ProductsLoadingSkeleton />}>
                 <Products category={category} query={query} currentPage={currentPage} />
             </Suspense>
         </div>
