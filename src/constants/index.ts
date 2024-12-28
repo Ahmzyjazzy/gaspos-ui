@@ -2,8 +2,14 @@ import { MenuLink } from "@/types";
 
 export const menuLinks: MenuLink[] = [
     {
-        name: 'Fuel',
+        name: 'Home',
         path: '/',
+        slug: 'home',
+        group: 'top'
+    },
+    {
+        name: 'Fuel',
+        path: '/?category=fuel',
         slug: 'fuel',
         group: 'top'
     },
