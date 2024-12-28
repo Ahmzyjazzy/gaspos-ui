@@ -37,8 +37,6 @@ const cartSlice = createSlice({
             localStorage.setItem('cart', JSON.stringify(state.items));
         },
         updateItem(state, action: PayloadAction<CartItem>) {
-            console.log('update item is called', action);
-
             const index = state.items.findIndex(
                 (item) => item.product.id === action.payload.product.id
             );

@@ -1,8 +1,9 @@
 "use client";
 
+import React from 'react'
 import { MagnifyingGlassIcon } from '@heroicons/react/16/solid';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
-import React from 'react'
+import { useDebouncedCallback } from 'use-debounce';
 
 interface Props {
     placeholder?: string;
@@ -13,7 +14,7 @@ export default function Search({ placeholder = "Search Items..." }: Props) {
     const pathname = usePathname();
     const { replace } = useRouter();
 
-    const handleSearch = (term: string) => {
+    const handleSearch = useDebouncedCallback((term: string) => {
         const params = new URLSearchParams(searchParams);
         if (term) {
             params.set('query', term);
@@ -21,7 +22,7 @@ export default function Search({ placeholder = "Search Items..." }: Props) {
             params.delete('query');
         }
         replace(`${pathname}?${params.toString()}`);
-    }
+    },300)
 
     return (
         <div className="flex items-center bg-pos-input-light rounded-full px-4 py-3 max-w-sm">
