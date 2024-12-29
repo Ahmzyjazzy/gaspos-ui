@@ -1,10 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CartItem, CartState } from '@/types';
+import { CartItem, CartState, DropdownSelectOption } from '@/types';
 import { generateRandomTwoDigitNumber } from '@/lib/util';
+import { paymentMethods } from '@/constants';
 
 const initialState: CartState = {
     items: JSON.parse(localStorage.getItem('cart') || '[]'),
     orderId: generateRandomTwoDigitNumber(),
+    paymentMethod: localStorage.getItem('paymentMethod') ?
+        JSON.parse(localStorage.getItem('paymentMethod') || '{}') as DropdownSelectOption : 
+        paymentMethods?.find(method => method.value === 'e-wallet'),
 };
 
 const cartSlice = createSlice({
@@ -52,9 +56,14 @@ const cartSlice = createSlice({
             state.items = [];
             localStorage.removeItem('cart');
         },
+        updatePaymentMethod(state, action: PayloadAction<DropdownSelectOption>) {
+            state.paymentMethod = action.payload;
+            localStorage.setItem('paymentMethod', JSON.stringify(state.paymentMethod));
+            console.log(state.paymentMethod);
+        },
     },
 });
 
-export const { addItem, removeItem, updateItem, clearCart } = cartSlice.actions;
+export const { addItem, removeItem, updateItem, clearCart, updatePaymentMethod } = cartSlice.actions;
 
 export default cartSlice.reducer;

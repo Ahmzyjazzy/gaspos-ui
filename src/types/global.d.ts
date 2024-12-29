@@ -25,3 +25,9 @@ export interface Product {
     image?: string;
     colorCode?: string;
 }
+
+
+export interface DropdownSelectOption {
+    name: string;
+    value: string;
+}

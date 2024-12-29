@@ -1,4 +1,6 @@
-import { MenuLink } from "@/types";
+import { MenuLink, DropdownSelectOption } from "@/types";
+import { QrCodeIcon, BanknotesIcon, CreditCardIcon } from '@heroicons/react/24/outline';
+import { ReactElement } from "react";
 
 export const menuLinks: MenuLink[] = [
     {
@@ -106,4 +108,25 @@ export const currencySymbolMapping: Record<string, string> = {
     'UGX': 'USh',
     'GHS': 'GH₵',
     'ZMW': 'ZK',
+};
+
+export const paymentMethods: DropdownSelectOption[] = [
+    {
+        name: 'Cash',
+        value: 'cash',
+    },
+    {
+        name: 'Debit Card',
+        value: 'debit-card',
+    },
+    {
+        name: 'E-Wallet',
+        value: 'e-wallet',
+    }
+];
+
+export const iconLibrary: Record<string, ReactElement> = {
+    'cash': <BanknotesIcon className="w-6 h-6 text-gray-400" />,
+    'debit-card': <CreditCardIcon className="w-6 h-6 text-gray-400" />,
+    'e-wallet': <QrCodeIcon className="w-6 h-6 text-gray-400" />,
 };
