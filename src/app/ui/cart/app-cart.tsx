@@ -4,9 +4,9 @@ import { AppDispatch, RootState } from '@/store';
 import { removeItem, updatePaymentMethod } from '@/store/cartSlice';
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import DropdownButtonInput from './inputs/dropdown-button-input';
-import { paymentMethods } from '@/constants';
 import { DropdownSelectOption } from '@/types';
+import EmptyCart from './empty-cart';
+import CartHeader from './cart-header';
 
 export default function AppCart() {
     const dispatch = useDispatch<AppDispatch>();
@@ -19,25 +19,15 @@ export default function AppCart() {
         dispatch(removeItem(id));
     };
 
-    if (cartItems.length === 0) return (
-        <div className='p-5'>
-            <h1>Your Cart</h1>
-            <div>Empty Cart</div>
-        </div>
-    );
+    if (cartItems.length === 0) return <EmptyCart orderId={orderId} paymentMethod={paymentMethod} />;
 
     return (
         <div className='p-5 space-y-5'>
-            <div className='flex justify-between items-center'>
-                <h1 className='text-foreground text-lg font-bold'>Order #{orderId}</h1>
-                <DropdownButtonInput
-                    options={paymentMethods}
-                    defaultValue={paymentMethod}  
-                    onSelect={function (option: DropdownSelectOption): void {
-                        dispatch(updatePaymentMethod(option));
-                    }}
-                />
-            </div>
+            <CartHeader
+                orderId={orderId}
+                paymentMethod={paymentMethod}
+                onSelect={(option: DropdownSelectOption) => dispatch(updatePaymentMethod(option))}
+            />
             <ul>
                 {cartItems.map((item) => (
                     <li key={item.product.id}>

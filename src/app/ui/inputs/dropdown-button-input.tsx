@@ -9,14 +9,19 @@ interface Props {
     options: DropdownSelectOption[];
     defaultValue: DropdownSelectOption;
     onSelect: (option: DropdownSelectOption) => void;
+    disabled?: boolean;
 }
 
-export default function DropdownButtonInput({ defaultValue, options, onSelect }: Props) {
+export default function DropdownButtonInput({ defaultValue, options, onSelect, disabled = false }: Props) {
     const dropdownRef = useRef<HTMLDivElement>(null);
     const [isOpen, setIsOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState<DropdownSelectOption>(defaultValue);
 
-    const toggleDropdown = () => setIsOpen(!isOpen);
+    const toggleDropdown = () => {
+        if (!disabled) {
+            setIsOpen(!isOpen);
+        }
+    };
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
@@ -45,7 +50,10 @@ export default function DropdownButtonInput({ defaultValue, options, onSelect }:
             {/* Button */}
             <button
                 onClick={toggleDropdown}
-                className="flex items-center justify-between px-4 py-2 bg-pos-input-light text-white rounded-full shadow-md hover:bg-gray-700 transition-colors duration-300"
+                className={cn(
+                    "flex items-center justify-between px-4 py-2 bg-pos-input-light text-white rounded-full shadow-md transition-colors duration-300",
+                    disabled ? 'cursor-not-allowed' : 'hover:bg-gray-700 cursor-pointer'
+                )}
             >
                 {iconLibrary[selectedOption?.value]}
                 <span className="mx-2">{selectedOption?.name}</span>

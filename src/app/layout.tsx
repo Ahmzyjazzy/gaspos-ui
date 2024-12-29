@@ -4,7 +4,7 @@ import "./globals.css";
 import config from "@/config/config";
 import AppSidebar from "./ui/app-sidebar";
 import { Providers } from "./provider";
-import AppCart from "./ui/app-cart";
+import AppCart from "./ui/cart/app-cart";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
