@@ -32,3 +32,7 @@ export function getInitial(productName: string): string {
     // Default to just the first letter of the first word if there's only one word
     return productName[0].toUpperCase();
 }
+
+export function generateRandomTwoDigitNumber(): number {
+    return Math.floor(Math.random() * 90) + 10;
+}

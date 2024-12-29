@@ -5,5 +5,6 @@ export interface CartItem {
 }
 
 export interface CartState {
+    orderId: number;
     items: CartItem[];
 }

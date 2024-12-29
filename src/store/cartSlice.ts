@@ -1,8 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CartItem, CartState } from '@/types';
+import { generateRandomTwoDigitNumber } from '@/lib/util';
 
 const initialState: CartState = {
     items: JSON.parse(localStorage.getItem('cart') || '[]'),
+    orderId: generateRandomTwoDigitNumber(),
 };
 
 const cartSlice = createSlice({

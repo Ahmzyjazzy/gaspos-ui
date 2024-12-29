@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function ProductsLoadingSkeleton() {
+export default function ProductListSkeleton() {
   return (
     <div className="grid lg:grid-cols-3 gap-5">
       {Array.from({ length: 6 }).map((_, index) => (

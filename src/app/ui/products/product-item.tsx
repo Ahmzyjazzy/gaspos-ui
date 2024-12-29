@@ -7,9 +7,9 @@ import { CartItem, Product } from '@/types'
 import { PlusIcon } from '@heroicons/react/16/solid';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import FuelQuantitySelector from './FuelQuantitySelector';
-import FuelVolumeInput from './FuelVolumeInput';
-import DefaultQuantityInput from './DefaultQuantityInput';
+import FuelQuantitySelector from '../inputs/fuel-quantity-selector';
+import FuelVolumeInput from '../inputs/fuel-volume-input';
+import DefaultQuantityInput from '../inputs/default-quantity-input';
 import Image from 'next/image';
 
 interface Props {

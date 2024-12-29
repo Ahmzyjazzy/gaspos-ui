@@ -1,6 +1,6 @@
 import React from 'react'
-import { fetchProducts } from '../actions';
-import ProductItem from './ProductItem';
+import ProductItem from './product-item';
+import { fetchProducts } from '@/app/actions';
 
 interface Props {
   category: string;
@@ -8,7 +8,7 @@ interface Props {
   currentPage: number;
 }
 
-export default async function Products({ category, query, currentPage }: Props) {
+export default async function ProductList({ category, query, currentPage }: Props) {
 
   const products = await fetchProducts({ category, query, currentPage });
 

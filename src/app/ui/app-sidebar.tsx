@@ -1,10 +1,10 @@
 "use client";
 
 import React from 'react'
-import AppLogo from './AppLogo'
+import AppLogo from './app-logo'
 import config from '@/config/config'
 import { menuLinks } from '@/constants'
-import AppMenuItem from './AppMenuItem'
+import AppMenuItem from './app-menu-item'
 import { usePathname, useSearchParams } from 'next/navigation';
 
 export default function AppSidebar() {

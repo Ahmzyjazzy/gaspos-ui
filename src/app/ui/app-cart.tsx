@@ -8,14 +8,22 @@ import { useDispatch, useSelector } from 'react-redux';
 export default function AppCart() {
     const dispatch = useDispatch<AppDispatch>();
     const cartItems = useSelector((state: RootState) => state.cart.items);
+    const orderId = useSelector((state: RootState) => state.cart.orderId);
 
     const handleRemove = (id: number) => {
         dispatch(removeItem(id));
     };
 
+    if (cartItems.length === 0) return (
+        <div className='p-5'>
+            <h1>Your Cart</h1>
+            <div>Empty Cart</div>
+        </div>
+    );
+
     return (
         <div className='p-5'>
-            <h2>Your Cart</h2>
+            <h1 className='text-foreground text-lg font-bold'>Order #{orderId}</h1>
             <ul>
                 {cartItems.map((item) => (
                     <li key={item.product.id}>
