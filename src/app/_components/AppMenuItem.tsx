@@ -1,5 +1,6 @@
 import { cn } from '@/lib/util';
 import { MenuLink } from '@/types';
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
 
@@ -17,8 +18,17 @@ export default function AppMenuItem({ menu, isActive }: Props) {
                 isActive && "text-pos-orange bg-active"
             )}
         >
-            <div className="w-6 h-6 flex items-center justify-center rounded-full bg-background">
-                {menu.name?.charAt(0)}
+            <div className={cn(
+                "w-6 h-6 flex items-center justify-center",
+                !menu.icon && "rounded-full bg-background"
+            )}
+            >
+                {menu.icon ? (
+                    isActive ?
+                        <Image alt={menu.name} src={`${menu.icon?.replaceAll('.png', '-active')}.png`} width={32} height={32} /> :
+                        <Image alt={menu.name} src={menu.icon} width={32} height={32} />
+                ) :
+                    (<p>{menu.slug.charAt(0)}</p>)}
             </div>
             <p className="text-sm font-semibold normal-case">{menu.name}</p>
         </Link>

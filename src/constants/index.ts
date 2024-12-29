@@ -11,30 +11,35 @@ export const menuLinks: MenuLink[] = [
         name: 'Fuel',
         path: '/?category=fuel',
         slug: 'fuel',
+        icon: '/menus/fuel.png',
         group: 'top'
     },
     {
         name: 'Food',
         path: '/?category=food',
         slug: 'food',
-        group: 'top'
+        icon: '/menus/food.png',
+        group: 'top',
     },
     {
         name: 'Drinks',
         path: '/?category=drinks',
         slug: 'drinks',
+        icon: '/menus/drinks.png',
         group: 'top'
     },
     {
         name: 'Service',
         path: '/service',
         slug: 'service',
+        icon: '/menus/service.png',
         group: 'bottom'
     },
     {
         name: 'Help',
         path: '/help',
         slug: 'help',
+        icon: '/menus/help.png',
         group: 'bottom'
     }
 ];
