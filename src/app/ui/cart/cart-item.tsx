@@ -76,7 +76,6 @@ export default function CartItem({ item, onRemove }: Props) {
                         priority
                         width={24}
                         height={24}
-                        layout="intrinsic"
                         objectFit="contain"
                     /> :
                     <Image
@@ -85,7 +84,6 @@ export default function CartItem({ item, onRemove }: Props) {
                         priority
                         width={24}
                         height={24}
-                        layout="intrinsic"
                         objectFit="contain"
                     />
                 }

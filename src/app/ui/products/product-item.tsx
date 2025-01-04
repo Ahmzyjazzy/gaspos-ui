@@ -94,7 +94,6 @@ export default function ProductItem({ product }: Props) {
                         priority
                         width={128}
                         height={128}
-                        layout="intrinsic"
                         objectFit="contain"
                     />) :
                     (<span className="text-black text-9xl font-bold">{getInitial(product.name)}</span>)}
