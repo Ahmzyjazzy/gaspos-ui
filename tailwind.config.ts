@@ -40,6 +40,12 @@ export default {
     {
       pattern: /bg-pos-input-(light|dark)/,
     },
+    {
+      pattern: /bg-(yellow|orange|green|blue|purple|red)/,
+    },
+    {
+      pattern: /^bg-\[#([a-fA-F0-9]{3,6})\]$/,
+    }
   ],
   plugins: [],
 } satisfies Config;

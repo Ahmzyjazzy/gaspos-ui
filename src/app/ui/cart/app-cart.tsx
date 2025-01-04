@@ -7,10 +7,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { DropdownSelectOption } from '@/types';
 import EmptyCart from './empty-cart';
 import CartHeader from './cart-header';
+import CartItem from './cart-item';
 
 export default function AppCart() {
     const dispatch = useDispatch<AppDispatch>();
-    
+
     const cartItems = useSelector((state: RootState) => state.cart.items);
     const orderId = useSelector((state: RootState) => state.cart.orderId);
     const paymentMethod = useSelector((state: RootState) => state.cart.paymentMethod);
@@ -30,19 +31,11 @@ export default function AppCart() {
             />
             <ul>
                 {cartItems.map((item) => (
-                    <li key={item.product.id}>
-                        <div className="flex justify-between">
-                            <span>
-                                {item.product.name} - {item.quantity}
-                                {item.volume && ` (${item.volume} L)`}
-                            </span>
-                            <button
-                                onClick={() => handleRemove(item.product.id)}
-                                className="text-red-500 hover:underline"
-                            >
-                                Remove
-                            </button>
-                        </div>
+                    <li key={item.product.id} className='mb-5'>
+                        <CartItem
+                            item={item}
+                            onRemove={() => handleRemove(item.product.id)}
+                        />
                     </li>
                 ))}
             </ul>

@@ -10,7 +10,7 @@ export async function wait(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-export function formatCurrency(amount: number, currencyCode: string = 'NGN') {
+export function formatAmount(amount: number, currencyCode: string = 'NGN') {
     return new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: currencyCode,
@@ -35,4 +35,20 @@ export function getInitial(productName: string): string {
 
 export function generateRandomTwoDigitNumber(): number {
     return Math.floor(Math.random() * 90) + 10;
+}
+
+export function resolveColorCode (colorCode: string): string {
+    if (['red', 'yellow', 'orange', 'green', 'blue', 'purple'].includes(colorCode))
+        return `bg-pos-${colorCode}`;
+    return 'bg-white';
+}
+
+export function resolveCartItemColor(category: string): string {
+    switch (category) {
+        case 'fuel': return '#232B2F';
+        case 'drinks': return 'purple';
+        case 'food': return 'orange';
+        default:
+            return 'white';
+    }
 }

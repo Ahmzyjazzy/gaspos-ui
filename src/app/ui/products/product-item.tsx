@@ -1,6 +1,6 @@
 "use client";
 
-import { cn, formatCurrency, getInitial } from '@/lib/util'
+import { cn, formatAmount, getInitial, resolveColorCode } from '@/lib/util'
 import { AppDispatch, RootState } from '@/store';
 import { addItem, updateItem } from '@/store/cartSlice';
 import { CartItem, Product } from '@/types'
@@ -23,12 +23,6 @@ export default function ProductItem({ product }: Props) {
     const [quantity, setQuantity] = useState(1);
     const [volume, setVolume] = useState<number | undefined>(30);
     const [selected, setSelected] = useState(false);
-
-    const resolveColorCode = (colorCode: string): string => {
-        if (['red', 'yellow', 'orange', 'green', 'blue', 'purple'].includes(colorCode))
-            return `bg-pos-${colorCode}`;
-        return 'bg-white';
-    }
 
     const handleAddToCart = (product: Product) => {
         const cartItem: CartItem = {
@@ -110,7 +104,7 @@ export default function ProductItem({ product }: Props) {
                 {!selected ?
                     (
                         <div className='flex justify-between items-center flex-wrap'>
-                            <p className='text-lg font-bold'>{formatCurrency(product.price)}</p>
+                            <p className='text-lg font-bold'>{formatAmount(product.price)}</p>
                             <button
                                 className="px-5 py-3 bg-pos-input-light text-white rounded-3xl text-sm w-fit"
                                 onClick={() => {

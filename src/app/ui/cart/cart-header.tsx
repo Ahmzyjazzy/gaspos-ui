@@ -13,7 +13,7 @@ interface Props {
 export default function CartHeader({ orderId, paymentMethod, onSelect, disabled = false }: Props) {
     return (
         <div className='flex justify-between items-center'>
-            <h1 className='text-foreground text-lg font-bold'>Order #{orderId}</h1>
+            <h1 className='text-foreground text-xl font-bold'>Order #{orderId}</h1>
             <DropdownButtonInput
                 options={paymentMethods}
                 defaultValue={paymentMethod}
