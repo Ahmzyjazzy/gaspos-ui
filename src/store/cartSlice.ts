@@ -4,11 +4,9 @@ import { generateRandomTwoDigitNumber } from '@/lib/util';
 import { paymentMethods } from '@/constants';
 
 const initialState: CartState = {
-    items: JSON.parse(localStorage.getItem('cart') || '[]'),
+    items: [],
     orderId: generateRandomTwoDigitNumber(),
-    paymentMethod: localStorage.getItem('paymentMethod') ?
-        JSON.parse(localStorage.getItem('paymentMethod') || '{}') as DropdownSelectOption : 
-        paymentMethods?.find(method => method.value === 'e-wallet'),
+    paymentMethod: paymentMethods?.find((method) => method.value === 'e-wallet'),
 };
 
 const cartSlice = createSlice({
@@ -35,12 +33,9 @@ const cartSlice = createSlice({
             } else {
                 state.items.push(action.payload);
             }
-
-            localStorage.setItem('cart', JSON.stringify(state.items));
         },
         removeItem(state, action: PayloadAction<number>) {
             state.items = state.items.filter((item) => item.product.id !== action.payload);
-            localStorage.setItem('cart', JSON.stringify(state.items));
         },
         updateItem(state, action: PayloadAction<CartItem>) {
             const index = state.items.findIndex(
@@ -49,17 +44,13 @@ const cartSlice = createSlice({
 
             if (index !== -1) {
                 state.items[index] = action.payload;
-                localStorage.setItem('cart', JSON.stringify(state.items));
             }
         },
         clearCart(state) {
             state.items = [];
-            localStorage.removeItem('cart');
         },
         updatePaymentMethod(state, action: PayloadAction<DropdownSelectOption>) {
             state.paymentMethod = action.payload;
-            localStorage.setItem('paymentMethod', JSON.stringify(state.paymentMethod));
-            console.log(state.paymentMethod);
         },
     },
 });

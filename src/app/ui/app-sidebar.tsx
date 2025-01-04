@@ -1,13 +1,13 @@
 "use client";
 
-import React from 'react'
+import React, { Suspense } from 'react'
 import AppLogo from './app-logo'
 import config from '@/config/config'
 import { menuLinks } from '@/constants'
 import AppMenuItem from './app-menu-item'
 import { usePathname, useSearchParams } from 'next/navigation';
 
-export default function AppSidebar() {
+const Sidebar = () => {
     const pathname = usePathname();
     const searchParams = useSearchParams();
     
@@ -41,4 +41,12 @@ export default function AppSidebar() {
             </div>
         </nav>
     )
+}
+
+export default function AppSidebar() {
+    return (
+        <Suspense fallback={<div>Loading Sidebar...</div>}>
+            <Sidebar />
+        </Suspense>
+    );
 }
